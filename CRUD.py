@@ -1,6 +1,5 @@
 from flask import Flask , request , jsonify
 
-
 app = Flask(__name__)
 
 user_Data = [
@@ -18,6 +17,7 @@ user_Data = [
     }
 ]
 
+
 @app.route("/")
 def index():
     return "This is Flask"
@@ -29,8 +29,6 @@ def allUsers():
     return jsonify(user_Data)
 
 
-
-
 #read operation : Get a specific User by their id
 @app.route('/user_id/<int:user_id>', methods = ['GET'])
 def update(user_id):
@@ -39,7 +37,6 @@ def update(user_id):
             return item
             response = {"message" : "User found successfully"}
     return "User not found"
-
 
 
 #create a new user : 
@@ -64,8 +61,6 @@ def update_user(user_id):
     return {'message' : 'book not found chinna'}
 
 
-
-
 #Delete operation : Delete existing data 
 @app.route('/delete/<int:user_id>' , methods = ['DELETE'])
 def delete_user(user_id):
@@ -74,7 +69,6 @@ def delete_user(user_id):
             user_Data.remove(item)
             return {'message' : 'successfully deleted user'}
     return 'user not found '
-
 
 
 if __name__ == "__main__":
